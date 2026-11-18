@@ -1,5 +1,6 @@
 from flask import Flask
 from controllers.gasto_controller import gasto_bp
+from controllers.integrante_controller import integrante_bp
 from datetime import datetime
 import sqlite3
 import os
@@ -31,6 +32,7 @@ def formato_fecha(valor):
 
 # Registro blueprint para modularizar Flask
 app.register_blueprint(gasto_bp)
+app.register_blueprint(integrante_bp)
 
 if __name__ == '__main__':
     inicializar_bd()    
