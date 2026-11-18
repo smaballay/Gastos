@@ -1,0 +1,194 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: whitesmoke;
+    color: #333;
+}
+
+.navbar {
+    background-color: #1e293b;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 1.4rem;
+    margin: 0; 
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.navbar a:not(.btn) {
+    color: white; 
+    text-decoration: none;
+    transition: color 0.2s ease; 
+}
+
+.navbar a:not(.btn):hover {
+    color: #28A745;
+}
+
+.container{
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.container h2{
+    text-align: center;
+    margin-block: 1rem;
+}
+
+/* --- Tarjetas --- */
+.card-gasto, .form-card, .table{
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-total{
+    background: #161e2e;
+    color: whitesmoke;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.total-value{
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.grid-gastos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-block: 1rem;
+    gap: 1rem;
+}
+.card-gasto{
+    padding: 1.2rem;
+}
+
+/* --- Tablas --- */
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    margin-top: 1 rem;
+}
+
+.table th, .table td{
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table th{
+    background-color: #f8fafc;
+    color: #475569;
+}
+
+/* --- Formularios --- */
+.form-card{
+    padding: 2rem;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.form-card h2{
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #1e293b;
+}
+
+.form-group{
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label{
+    font-weight: 500;
+    color: #475569;
+}
+
+.form-group input, .form-group select, .input-select{
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.form-actions{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.form-actions .btn{
+    flex: 1;
+}
+
+/* --- Botones --- */
+.btn, .btn-list{
+    display: inline-block;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+.btn{
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+}
+
+.btn:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-list{
+    padding: 0.3rem;
+    font-size: 0.85rem;
+    background-color: transparent;
+}
+
+.btn-primary{
+    background-color: #28A745;
+}
+.btn-primary:hover{
+    background-color: #218838;
+}
+
+.btn-cancel{
+    background-color: transparent;
+    color: #64748b;
+    border-color: #cbd5e1;
+}
+.btn-cancel:hover{
+    background-color: #f1f5f9;
+}

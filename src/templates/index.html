@@ -1,0 +1,55 @@
+{%extends "base.html"%}
+{%block content%}
+
+<div class="card-total">
+    <h2>Gasto total del hogar</h2>
+    <p class="total-value">${{total_gastos|formato_moneda}}</p>
+</div>
+
+<h2>Gasto por integrante</h2>
+<div class="grid-gastos">
+    {%for p in por_persona%}
+    <div class="card-gasto">
+        <h3>{{p.nombre}}</h3>
+        <p>Pagó un total de: <strong>${{(p.pagado if p.pagado else 0)|formato_moneda}}</strong></p>
+    </div>
+    {%else%}
+    <p class="card-gasto">
+        No hay integrantes activos.
+    </p>
+    {%endfor%}
+</div>
+
+<h2>Historial de movimientos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Pagado por</th>
+            <th>Monto</th>
+            <th style="text-align: right;">Acciones</th>
+        </tr>
+    </thead> 
+    <tbody>
+        {%for g in gastos%}
+        <tr>
+            <td>{{g.fecha|formato_fecha}}</td>
+            <td>{{g.descripcion}}</td>
+            <td>{{g.pagador}}</td>
+            <td><strong>${{g.monto|formato_moneda}}</strong></td>
+            <td style="text-align: right;">
+                <a href="{{url_for('gasto_bp.editar_gasto', id=g.id)}}" class="btn-list">✏️</a>
+                <form action="{{url_for('gasto_bp.eliminar_gasto', id=g.id)}}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-list" onclick="return confirm('¿Seguro deseas eliminar este gasto?');">❌</button>
+                </form>
+            </td>
+        </tr>
+        {%else%}
+        <tr>
+            <td colspan="5">No hay gastos registrados todavía.</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}

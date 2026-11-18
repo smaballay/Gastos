@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+{%block content%}
+
+<form action="{{url_for('gasto_bp.editar_gasto', id=gasto.id) if gasto else url_for('gasto_bp.agregar_gasto')}}" method="POST" class="form-card">
+    
+    <h2>{{"Editar gasto" if gasto else "Registrar nuevo gasto"}}</h2>
+ 
+    <div class="form-group">
+        <label for="fecha">Fecha del consumo:</label>
+        <input type="date" id="fecha" name="fecha" value="{{gasto.fecha if gasto else hoy}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" value="{{gasto.descripcion if gasto else ''}}" required placeholder="Ej: Supermercado Coto">
+    </div>
+
+    <div class="form-group">
+        <label for="monto">Monto ($):</label>
+        <input type="number" min="0.01" id="monto" name="monto" value="{{gasto.monto if gasto else ''}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="integrante_id">¿Quién lo pagó?:</label>
+        <select id="integrante_id" name="integrante_id" required>
+            {%for i in integrantes%}
+            <option value="{{i.id}}" {{'selected' if gasto and gasto.integrante_id == i.id else ''}}>
+                {{i.nombre}}
+            </option>
+            {%endfor%}
+        </select>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{{url_for('gasto_bp.index')}}" class="btn btn-cancel">Cancelar</a>
+    </div>
+</form>
+
+{%endblock%}

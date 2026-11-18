@@ -1,0 +1,35 @@
+{%extends "base.html"%}
+{%block content%}
+<h2>Integrantes del hogar</h2>
+
+<div class="table-container" style="max-width: 600px; margin: 0 auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th style="text-align: right;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in integrantes%}
+            <tr>
+                <td>👤 {{i.nombre}}</td>
+                <td style="text-align: right;">
+                    <a href="{{url_for('gasto_bp.editar_integrante', id=i.id)}}" class="btn-list">✏️</a>
+                    <form action="{{url_for('gasto_bp.eliminar_integrante', id=i.id)}}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-list" onclick="return confirm('¿Seguro deseas eliminar este integrante?');">❌</button>
+                    </form>
+                </td>
+            </tr>
+            {%else%}
+            <tr>
+                <td>No hay integrantes activos.</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <div style="margin-top: 1.5rem; text-align: center;">
+        <a href="{{url_for('gasto_bp.agregar_integrante')}}" class="btn btn-primary">+ Agregar integrante</a>
+    </div>
+</div>
+{%endblock%}
