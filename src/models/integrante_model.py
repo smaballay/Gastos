@@ -32,7 +32,7 @@ class IntegranteModel:
         try:
             with conexion_db() as conexion, conexion:
                 cursor = conexion.execute("UPDATE integrantes SET nombre = ? WHERE id = ? AND activo = 1", (nombre, integrante_id))
-            return True
+            return cursor.rowcount > 0
         except sqlite3.Error as e:
             print(f"Error al actualizar integrante: {e}")
             return False

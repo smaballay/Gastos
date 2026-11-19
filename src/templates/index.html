@@ -1,8 +1,25 @@
 {%extends "base.html"%}
 {%block content%}
+<form method="GET" action="{{url_for('gasto_bp.index')}}" class="card-periodo">
+    <div>
+        <h2>Periodo: </h2>
+    </div>
+    <div class="form-group">
+        <label for="desde">Desde:</label>
+        <input type="date" id="desde" name="desde" value="{{desde}}">
+    </div>
+    <div class="form-group">
+        <label for="hasta">Hasta:</label>
+        <input type="date" id="hasta" name="hasta" value="{{hasta}}">
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <a href="{{url_for('gasto_bp.index', desde='', hasta='')}}" class="btn btn-cancel">Historial</a>
+    </div>
+</form>
 
 <div class="card-total">
-    <h2>Gasto total del hogar</h2>
+    <h2>Gasto total{% if desde or hasta %} del periodo{% else %} del hogar{% endif %}</h2>
     <p class="total-value">${{total_gastos|formato_moneda}}</p>
 </div>
 
@@ -10,7 +27,7 @@
 <div class="grid-gastos">
     {%for p in por_persona%}
     <div class="card-gasto">
-        <h3>{{p.nombre}}</h3>
+        <h3>{{p.nombre}}{% if not p.activo %} <small>(inactivo)</small>{% endif %}</h3>
         <p>Pagó un total de: <strong>${{(p.pagado if p.pagado else 0)|formato_moneda}}</strong></p>
     </div>
     {%else%}

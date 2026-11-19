@@ -31,6 +31,7 @@ Gastos/
 * **Gestión de Integrantes:** Alta, edición y baja lógica para mantener la integridad del historial de gastos.
 * **Registro y Control de Gastos:** Carga, edición y eliminación de consumos con fecha, descripción, monto y asignación de pagador.
 * **Resumen Financiero:** Visualización del gasto total del hogar, desglose acumulado por integrante e historial ordenado cronológicamente.
+* **Filtro por período:** El resumen, el desglose por integrante y el historial se calculan sobre un rango de fechas. Por defecto muestra el mes en curso (del día 1 hasta hoy); el botón "Historial" quita el filtro y muestra todo. Los integrantes dados de baja aparecen en el desglose solo si pagaron algo dentro del período.
 
 ## Instalación y ejecución
  
