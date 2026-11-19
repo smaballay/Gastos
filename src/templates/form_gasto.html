@@ -1,6 +1,12 @@
 {%extends "base.html"%}
 {%block content%}
 
+{%if not integrantes%}
+<div class="flash flash-error" role="alert">
+    <a href="{{url_for('integrante_bp.agregar_integrante')}}">Agregá un integrante</a>
+    para poder registrar gastos.
+</div>
+{%else%}
 <form action="{{url_for('gasto_bp.editar_gasto', id=gasto.id) if gasto else url_for('gasto_bp.agregar_gasto')}}" method="POST" class="form-card">
     
     <h2>{{"Editar gasto" if gasto else "Registrar nuevo gasto"}}</h2>
@@ -17,7 +23,7 @@
 
     <div class="form-group">
         <label for="monto">Monto ($):</label>
-        <input type="number" min="0.01" id="monto" name="monto" value="{{gasto.monto if gasto else ''}}" required>
+        <input type="number" step="0.01" min="0.01" id="monto" name="monto" value="{{gasto.monto|monto_input if gasto else ''}}" required>
     </div>
 
     <div class="form-group">
@@ -36,5 +42,5 @@
         <a href="{{url_for('gasto_bp.index')}}" class="btn btn-cancel">Cancelar</a>
     </div>
 </form>
-
+{%endif%}
 {%endblock%}

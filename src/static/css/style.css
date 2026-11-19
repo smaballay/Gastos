@@ -89,7 +89,6 @@ body{
     width: 100%;
     border-collapse: collapse;
     overflow: hidden;
-    margin-top: 1 rem;
 }
 
 .table th, .table td{
@@ -166,11 +165,6 @@ body{
     font-size: 1rem;
 }
 
-.btn:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 .btn-list{
     padding: 0.3rem;
     font-size: 0.85rem;
@@ -191,4 +185,24 @@ body{
 }
 .btn-cancel:hover{
     background-color: #f1f5f9;
+}
+
+/* Mensajes flash */
+.flash{
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.flash-error{
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.flash-success{
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
 }
